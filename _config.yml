@@ -1,0 +1,24 @@
+# Jekyll configuration
+title: Ivan Bonma's Blog
+author: Ivan Bonma
+email: your-email@example.com
+description: Un blog sobre desarrollo, tecnología y más
+url: https://ivanbonma.github.io
+
+# Theme
+theme: minima
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Markdown processor
+markdown: kramdown
+
+# Exclude from processing
+exclude:
+  - .gitignore
+  - README.md
+  - Gemfile
+  - Gemfile.lock

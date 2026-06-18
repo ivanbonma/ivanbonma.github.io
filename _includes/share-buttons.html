@@ -1,0 +1,13 @@
+<div class="share-buttons">
+  <p class="share-label">📤 Compartir este post:</p>
+  <div class="share-links">
+    <a href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&url={{ page.url | absolute_url }}" 
+       class="share-btn twitter" target="_blank">Twitter</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" 
+       class="share-btn facebook" target="_blank">Facebook</a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" 
+       class="share-btn linkedin" target="_blank">LinkedIn</a>
+    <a href="https://reddit.com/submit?url={{ page.url | absolute_url }}&title={{ page.title | uri_escape }}" 
+       class="share-btn reddit" target="_blank">Reddit</a>
+  </div>
+</div>

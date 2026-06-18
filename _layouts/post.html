@@ -4,21 +4,20 @@ layout: default
 
 <article class="post">
   <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">
-        {{ page.date | date: '%d de %B de %Y' }}
-      </time>
-      {% if page.author %}
-        • Por {{ page.author }}
-      {% endif %}
-    </p>
+    <h1>{{ page.title }}</h1>
+    
+    <div style="display: flex; gap: 20px; color: #999; font-size: 0.95rem; margin-bottom: 20px; flex-wrap: wrap;">
+      <span>📅 {{ page.date | date: '%d de %B de %Y' }}</span>
+      <span>✍️ {{ site.author }}</span>
+      <span>⏱️ {% assign words = content | number_of_words %}{% if words < 180 %}1{% else %}{{ words | divided_by: 180 | plus: 1 }}{% endif %} min lectura</span>
+    </div>
+    
     {% if page.categories %}
-      <p class="post-categories">
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
         {% for category in page.categories %}
-          <span class="category-badge">{{ category }}</span>
+          <span class="badge badge-primary">{{ category }}</span>
         {% endfor %}
-      </p>
+      </div>
     {% endif %}
   </header>
 
@@ -27,114 +26,10 @@ layout: default
   </div>
 
   <footer class="post-footer">
-    <hr>
-    <p>¿Te gustó este post? Compártelo en redes sociales 🚀</p>
+    <hr style="margin: 40px 0; border: none; border-top: 2px solid #eee;">
   </footer>
 </article>
 
-<style>
-  .post {
-    margin-top: 30px;
-  }
-
-  .post-header {
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #eee;
-  }
-
-  .post-title {
-    font-size: 2em;
-    margin-bottom: 10px;
-    color: #667eea;
-  }
-
-  .post-meta {
-    color: #999;
-    font-size: 0.9em;
-  }
-
-  .post-categories {
-    margin-top: 10px;
-  }
-
-  .category-badge {
-    display: inline-block;
-    background: #667eea;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 0.85em;
-    margin-right: 8px;
-    margin-top: 5px;
-  }
-
-  .post-content {
-    line-height: 1.8;
-    font-size: 1.05em;
-    margin: 30px 0;
-  }
-
-  .post-content h2 {
-    margin-top: 40px;
-    margin-bottom: 20px;
-    padding-top: 20px;
-  }
-
-  .post-content h3 {
-    margin-top: 25px;
-    margin-bottom: 15px;
-  }
-
-  .post-content code {
-    background: #f5f5f5;
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.9em;
-  }
-
-  .post-content pre {
-    background: #2d2d2d;
-    color: #f8f8f2;
-    padding: 15px;
-    border-radius: 5px;
-    overflow-x: auto;
-    margin: 20px 0;
-  }
-
-  .post-content pre code {
-    color: #f8f8f2;
-    background: none;
-    padding: 0;
-  }
-
-  .post-content blockquote {
-    border-left: 4px solid #667eea;
-    padding-left: 15px;
-    color: #666;
-    margin: 20px 0;
-    font-style: italic;
-  }
-
-  .post-footer {
-    margin-top: 40px;
-    padding-top: 20px;
-    color: #666;
-  }
-
-  .post-footer p {
-    text-align: center;
-    font-size: 0.95em;
-  }
-
-  @media (max-width: 600px) {
-    .post-title {
-      font-size: 1.5em;
-    }
-
-    .post-content {
-      font-size: 1em;
-    }
-  }
-</style>
+{% include share-buttons.html %}
+{% include author-box.html %}
+{% include related-posts.html %}

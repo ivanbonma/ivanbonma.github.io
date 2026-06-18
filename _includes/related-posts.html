@@ -1,0 +1,29 @@
+{% assign maxRelated = 3 %}
+{% assign minCommonTags = 1 %}
+{% assign maxRelatedCounter = 0 %}
+
+<div class="related-posts">
+  <h3>📚 Posts relacionados</h3>
+  <ul>
+    {% for post in site.posts %}
+      {% assign sameTagCount = 0 %}
+      
+      {% for tag in post.categories %}
+        {% if page.categories contains tag %}
+          {% assign sameTagCount = sameTagCount | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+      
+      {% if post.url != page.url and sameTagCount >= minCommonTags %}
+        <li>
+          <a href="{{ post.url }}">{{ post.title }}</a>
+          <span class="post-date">{{ post.date | date: '%d/%m/%Y' }}</span>
+        </li>
+        {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+        {% if maxRelatedCounter >= maxRelated %}
+          {% break %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>

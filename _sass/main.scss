@@ -1,0 +1,157 @@
+// Colors
+$primary: #667eea;
+$secondary: #764ba2;
+$dark: #1a1a1a;
+$light: #f8f9fa;
+$white: #ffffff;
+$gray: #6c757d;
+$gray-light: #e9ecef;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Trebuchet MS, sans-serif;
+  line-height: 1.6;
+  color: $dark;
+  background: $light;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: $dark;
+  margin: 1.5rem 0 1rem 0;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; color: $primary; border-bottom: 3px solid $primary; padding-bottom: 10px; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+  transition: all 0.3s;
+
+  &:hover {
+    color: $secondary;
+    text-decoration: underline;
+  }
+}
+
+// Code blocks
+code {
+  background: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  color: #d63384;
+}
+
+pre {
+  background: #1e1e1e;
+  color: #e0e0e0;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 20px 0;
+  position: relative;
+
+  code {
+    color: #e0e0e0;
+    background: none;
+    padding: 0;
+  }
+}
+
+blockquote {
+  border-left: 5px solid $primary;
+  padding: 15px 20px;
+  margin: 20px 0;
+  background: #f0f4ff;
+  border-radius: 0 5px 5px 0;
+}
+
+// Lists
+ul, ol {
+  margin-left: 20px;
+  margin-bottom: 15px;
+
+  li {
+    margin-bottom: 8px;
+    line-height: 1.8;
+  }
+}
+
+// Tables
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background: $white;
+  border-radius: 5px;
+  overflow: hidden;
+
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid $gray-light;
+  }
+
+  th {
+    background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+    color: $white;
+    font-weight: bold;
+  }
+
+  tr:hover {
+    background: #f5f5f5;
+  }
+}
+
+// Images
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 20px 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+// Buttons
+.btn {
+  display: inline-block;
+  padding: 10px 25px;
+  background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+  color: $white;
+  text-decoration: none;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, $secondary 0%, $primary 100%);
+}

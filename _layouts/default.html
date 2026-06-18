@@ -1,174 +1,97 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ site.lang | default: 'es' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} | {{ site.title }}</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            background: white;
-            border-radius: 10px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        
-        header h1 {
-            color: #667eea;
-            margin-bottom: 10px;
-            font-size: 2.5em;
-        }
-        
-        header p {
-            color: #666;
-            font-size: 1.1em;
-        }
-        
-        nav {
-            margin-top: 20px;
-        }
-        
-        nav a {
-            color: #667eea;
-            text-decoration: none;
-            margin-right: 20px;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav a:hover {
-            color: #764ba2;
-        }
-        
-        main {
-            background: white;
-            border-radius: 10px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        
-        h2 {
-            color: #667eea;
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
-        
-        h3 {
-            color: #764ba2;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-        
-        p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        
-        ul, ol {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-        
-        li {
-            margin-bottom: 8px;
-        }
-        
-        a {
-            color: #667eea;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        .post-list {
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .post-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .post-list li:last-child {
-            border-bottom: none;
-        }
-        
-        footer {
-            background: white;
-            border-radius: 10px;
-            padding: 20px 40px;
-            margin-top: 30px;
-            text-align: center;
-            color: #666;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        
-        code {
-            background: #f4f4f4;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-        }
-        
-        pre {
-            background: #f4f4f4;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-            margin-bottom: 15px;
-        }
-        
-        blockquote {
-            border-left: 4px solid #667eea;
-            padding-left: 15px;
-            color: #666;
-            margin: 15px 0;
-        }
-    </style>
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <meta name="author" content="{{ site.author }}">
+    <meta property="og:title" content="{{ page.title | default: site.title }}">
+    <meta property="og:description" content="{{ page.description | default: site.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page.title | default: site.title }}">
+    <meta name="twitter:creator" content="@ivanbonma">
+    
+    <title>{{ page.title | default: site.title }} | {{ site.title }}</title>
+    
+    <link rel="shortcut icon" href="{{ '/favicon.ico' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    {% feed_meta %}
+    {% seo %}
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics_id }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ site.google_analytics_id }}', { 'anonymize_ip': true });
+    </script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>{{ site.title }}</h1>
-            <p>{{ site.description }}</p>
-            <nav>
-                <a href="/">🏠 Inicio</a>
-                <a href="/blog">📝 Blog</a>
-                <a href="/about">👤 Sobre mí</a>
+    <header class="site-header">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <h1 class="site-title">
+                <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+            </h1>
+            <p class="site-description">{{ site.description }}</p>
+            
+            <nav class="site-nav">
+                <a href="{{ '/' | relative_url }}">🏠 Inicio</a>
+                <a href="{{ '/blog' | relative_url }}">📝 Blog</a>
+                <a href="{{ '/archive' | relative_url }}">📚 Archivo</a>
+                <a href="{{ '/about' | relative_url }}">👤 Sobre mí</a>
+                <a href="{{ '/contact' | relative_url }}">📧 Contacto</a>
             </nav>
-        </header>
-        
-        <main>
-            {{ content }}
-        </main>
-        
-        <footer>
-            <p>&copy; 2024 {{ site.author }}. Todos los derechos reservados.</p>
-            <p>Hecho con ❤️ usando GitHub Pages</p>
-        </footer>
-    </div>
+        </div>
+    </header>
+    
+    <main class="site-main">
+        {{ content }}
+    </main>
+    
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>🔗 Enlaces</h3>
+                    <ul>
+                        <li><a href="{{ '/' | relative_url }}">Inicio</a></li>
+                        <li><a href="{{ '/blog' | relative_url }}">Blog</a></li>
+                        <li><a href="{{ '/about' | relative_url }}">Sobre mí</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>🌐 Sígueme</h3>
+                    <ul>
+                        <li><a href="https://github.com/ivanbonma" target="_blank">GitHub</a></li>
+                        <li><a href="https://twitter.com/ivanbonma" target="_blank">Twitter</a></li>
+                        <li><a href="https://linkedin.com/in/ivanbonma" target="_blank">LinkedIn</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>📄 Recursos</h3>
+                    <ul>
+                        <li><a href="{{ '/feed.xml' | relative_url }}">RSS Feed</a></li>
+                        <li><a href="{{ '/privacy' | relative_url }}">Privacidad</a></li>
+                        <li><a href="{{ '/terms' | relative_url }}">Términos</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; {{ site.time | date: '%Y' }} <strong>{{ site.author }}</strong>. Todos los derechos reservados.</p>
+                <p>Hecho con ❤️ usando <a href="https://pages.github.com" target="_blank">GitHub Pages</a> y <a href="https://jekyllrb.com" target="_blank">Jekyll</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="back-to-top" title="Volver al inicio">↑</div>
+    <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
 </body>
 </html>
